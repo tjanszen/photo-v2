@@ -8,7 +8,7 @@ module.exports = function(album) {
   } else if (album.primaryIndex === -1) {
     image = album.photos[0];
   } else {
-    image = album.photos[album.photos.primaryIndex];
+    image = album.photos[album.primaryIndex];
   }
 
   return image;

@@ -1,11 +1,31 @@
 extends ../../layouts/master
 block content
-  h3 Show Album
 
-  a(href='/albums/' + album._id + '/edit') Edit
+  .btn-toolbar(role='toolbar')
+    .btn-group(role='group')
+      a.btn.btn-default(href='/albums/#{album._id}/edit'): i.fa.fa-pencil-square-o
+    .btn-group(role='group')
+      a.btn.btn-default(href='/albums/new'): i.fa.fa-plus
+    .btn-group(role='group')
+      a.btn.btn-default(href='/albums'): i.fa.fa-camera
 
-  h4= album.name
-  h5= album.date
-  
-  each photo in album.photos
-    img(src=photo, width=100, height=100)
+  h3= album.name
+  small= moment(album.date).format('MMMM Do YYYY')
+
+  form#add-photos(method='post', action='/albums/#{album._id}/photos', enctype='multipart/form-data')
+    input(type='file', name='photos', multiple=true)
+    button.btn.btn-default.btn-xs(type='submit') Add Photos
+
+  #photos
+    each photo,index in album.photos
+      .photo
+        .btn-toolbar(role='toolbar')
+          if !(album.primaryIndex === index)
+            .btn-group(role='group')
+              form(method='post', action='/albums/#{album._id}/mark')
+                input(type='hidden', value=index, name='index')
+                button.btn.btn-info.btn-xs(type='submit') M
+          .btn-group(role='group')
+            form(method='post', action='/albums/#{album._id}/photos/#{index}/delete')
+              button.btn.btn-danger.btn-xs(type='submit') X
+        .image(style='background-image:url("#{photo}")')
