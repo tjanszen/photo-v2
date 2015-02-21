@@ -1,0 +1,25 @@
+extends ../../layouts/master
+block content
+
+  .btn-toolbar(role='toolbar')
+    .btn-group(role='group')
+      a.btn.btn-default(href='/albums/#{album._id}'): i.fa.fa-desktop
+    .btn-group(role='group')
+      a.btn.btn-default(href='/albums/new'): i.fa.fa-plus
+    .btn-group(role='group')
+      a.btn.btn-default(href='/albums'): i.fa.fa-camera
+
+  h3 Edit Album
+
+  .row
+    .col-xs-4
+      form(method='post', action='/albums/#{album._id}')
+        .form-group
+          label(for='name') Name
+          input#name.form-control(type='text', name='name', autofocus=true, value=album.name)
+        .form-group
+          label(for='date') Date
+          input#date.form-control(type='date', name='date', value=moment(album.date).format('YYYY-MM-DD'))
+        .form-group
+          button.btn.btn-default(type='submit') Update Album
+    .col-xs-8

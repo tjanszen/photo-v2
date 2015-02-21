@@ -1,0 +1,11 @@
+extends ../../layouts/master
+block content
+  h3 Show Album
+
+  a(href='/albums/' + album._id + '/edit') Edit
+
+  h4= album.name
+  h5= album.date
+  
+  each photo in album.photos
+    img(src=photo, width=100, height=100)

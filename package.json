@@ -23,18 +23,21 @@
   "version": "1.0.0",
   "scripts": {
     "start": "node server/index.js",
-    "localstart": "MONGO_URL=mongodb://localhost/hapi-prototype PORT=3333 nodemon -e js,jade server/index.js",
+    "localstart": "MONGO_URL=mongodb://localhost/photo-album PORT=3333 nodemon -e js,jade server/index.js",
     "clean": "rm -rf node_modules && rm -rf public && npm install && bower install && gulp build",
     "postinstall": "bower install && gulp build"
   },
   "license": "MIT",
   "dependencies": {
+    "async": "^0.9.0",
+    "aws-sdk": "^2.1.13",
     "good": "^5.1.1",
     "good-console": "^4.1.0",
     "hapi": "^8.2.0",
     "jade": "^1.9.2",
     "joi": "^5.1.0",
     "lodash": "^3.2.0",
+    "moment": "^2.9.0",
     "mongoose": "^3.8.23"
   },
   "devDependencies": {
