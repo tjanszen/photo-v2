@@ -3,6 +3,8 @@
 var _ = require('lodash');
 
 module.exports = function(server) {
+  console.log('info', 'Intercepting onPreResponse');
+
   server.ext('onPreResponse', function(request, reply){
     if(!request.response.source || !request.response.source.template){
       return reply.continue();
