@@ -11,14 +11,14 @@ block content
     .col-xs-4
       form(method='post', action='/albums', enctype='multipart/form-data')
         .form-group
-            label(for='name') Name
-            input#name.form-control(type='text', name='name', autofocus=true)
-          .form-group
-            label(for='date') Date
-            input#date.form-control(type='date', name='date')
-          .form-group
-            label(for='photos') Photos
-            input#photos(type='file', name='photos', multiple=true)
-          .form-group
-            button.btn.btn-default(type='submit') Add Album
+          label(for='name') Name
+          input#name.form-control(type='text', name='name', autofocus=true)
+        .form-group
+          label(for='date') Date
+          input#date.form-control(type='date', name='date')
+        .form-group
+          label(for='photos') Photos
+          input#photos(type='file', name='photos', multiple=true)
+        .form-group
+          button.btn.btn-default(type='submit') Add Album
     .col-xs-8
