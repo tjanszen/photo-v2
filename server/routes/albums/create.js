@@ -17,6 +17,7 @@ module.exports = {
     }
 
     delete request.payload.photos;
+    request.payload.userId = request.auth.credentials._id;
     var album = new Album(request.payload);
 
     album.upload(photos, function() {
